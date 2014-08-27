@@ -275,26 +275,6 @@ class ForumRole extends DataExtension {
 	}
 
 
-	public function BanLink() {
-		foreach(Forum::get() as $forum) {
-			if ($forum->canModerate()) {
-				$link = $forum->Link('ban') .'/'. $this->owner->ID;
-				return "<a class='banLink' href=\"$link\" rel=\"$this->owner->ID\">". _t('Post.BANUSER', 'Ban User') ."</a>";
-			}
-		}
-	}
-
-
-	public function GhostLink() {
-		foreach(Forum::get() as $forum) {
-			if ($forum->canModerate()) {
-				$link = $forum->Link('ghost') .'/'. $this->owner->ID;
-				return "<a class='ghostLink' href=\"$link\" rel=\"$this->owner->ID\">". _t('Post.GHOSTUSER', 'Ghost User') ."</a>";
-			}
-		}
-	}
-
-
 	/**
 	 * Can the current user edit the given member?
 	 *

@@ -225,6 +225,22 @@ class Post extends DataObject {
 		return false;
 	}
 
+	public function BanLink() {
+		$thread = $this->Thread();
+		if($thread->canModerate()) {
+			$link = $thread->Forum()->Link('ban') .'/'. $this->AuthorID;
+			return "<a class='banLink' href=\"$link\" rel=\"$this->AuthorID\">". _t('Post.BANUSER', 'Ban User') ."</a>";
+		}
+	}
+
+	public function GhostLink() {
+		$thread = $this->Thread();
+		if($thread->canModerate()) {
+			$link = $thread->Forum()->Link('ghost') .'/'. $this->AuthorID;
+			return "<a class='ghostLink' href=\"$link\" rel=\"$this->AuthorID\">". _t('Post.GHOSTUSER', 'Ghost User') ."</a>";
+		}
+	}
+
 	/**
 	 * Return the parsed content and the information for the 
 	 * RSS feed
